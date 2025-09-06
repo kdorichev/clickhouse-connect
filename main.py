@@ -13,10 +13,10 @@ config = dotenv_values(".env")
 
 try:
     client = clickhouse_connect.get_client(
-        host=config.get('HOSTNAME', 'localhost'),
-        database=config.get('DATABASE', 'default'),
-        username=config.get('USERNAME', 'default'),
-        password=config.get('PASSW', ''),
+        host=config.get("HOSTNAME", "localhost"),
+        database=config.get("DATABASE", "default"),
+        username=config.get("USERNAME", "default"),
+        password=config.get("PASSW", ""),
     )
 except (TimeoutError, ConnectTimeoutError, MaxRetryError, OperationalError) as exc:
     print(exc)
@@ -25,18 +25,18 @@ except (TimeoutError, ConnectTimeoutError, MaxRetryError, OperationalError) as e
 
 print(f"ClickHouse Server {client.server_version}")
 
-if len(sys.argv) >1 and sys.argv[1]:
+if len(sys.argv) > 1 and sys.argv[1]:
     COMMAND = sys.argv[1]
 else:
-    COMMAND = config.get('COMMAND', '')
+    COMMAND = config.get("COMMAND", "")
 
 if not COMMAND:
-    print('Nothing to do')
+    print("Nothing to do")
     sys.exit(0)
 
 res = client.query(COMMAND)
 
-print(COMMAND+'\n')
+print(COMMAND + "\n")
 
 for row in res.result_rows:
     print(" ".join(str(item) for item in row))
