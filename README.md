@@ -9,7 +9,12 @@ pip install -r requirements.txt
 ```
 ## Configuration
 
-Create `.env` with varuables `USER_NAME`, `PASSW`, `DATABASE` and optional `COMMAND`.
+Create `.env` with variables and corresponding values `USERNAME`, `PASSW`, `DATABASE` and optional `COMMAND`, for example:
+```
+USERNAME=user1
+PASSW=mypassword
+DATABASE=mydatabase
+```
 
 ## Usage
 Run 
