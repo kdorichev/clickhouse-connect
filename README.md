@@ -17,7 +17,7 @@ DATABASE=mydatabase
 ```
 
 ## Usage
-Run 
+Run
 ```bash
-python main.py [COMMAND]
+python main.py ['SQL COMMAND']
 ```
