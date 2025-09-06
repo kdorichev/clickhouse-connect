@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
+# Demonstration of working with ClickHouse from Python
 
 import sys
 import clickhouse_connect
 from dotenv import dotenv_values
 from urllib3.exceptions import ConnectTimeoutError, MaxRetryError
 from clickhouse_connect.driver.exceptions import OperationalError
+
+
 config = dotenv_values(".env")
 
 try:
@@ -16,7 +19,6 @@ try:
         password=config.get('PASSW', ''),
     )
 except (TimeoutError, ConnectTimeoutError, MaxRetryError, OperationalError) as exc:
-    # print(f"Time out trying to connect to {config.get('HOSTNAME', 'localhost')}")
     print(exc)
     sys.exit(1)
 
